@@ -24,7 +24,7 @@ class MovieEditForm extends Component {
     <div className="add">
     <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre)}>
      <label> Title
-      <input type="text" name="title" placeholder="Title" value{this.state.title} onChange={this.handleInputChange} />
+      <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
      </label>
      <label> Description
       <input type="text" name="desc" placeholder="Description" value={this.state.desc} onChange={this.handleInputChange} />
