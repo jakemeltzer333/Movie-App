@@ -12,7 +12,6 @@ const Header = (props) => {
           <li onClick={props.logOut}>Log Out</li>
           <li onClick={() => props.setPage('register')}>Register</li>
           <li onClick={() => props.setPage('user')}>User Dashborard</li>
-          <li>Logout</li>
         </ul>
        </nav>
      </header>
