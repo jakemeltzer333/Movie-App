@@ -18,6 +18,6 @@ function setDatabase() {
   }
 }
 
-const db = database();
+const db = setDatabase();
 
 module.exports = db;
