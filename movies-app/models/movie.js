@@ -27,6 +27,13 @@ const Movie = {
             WHERE id= $4
             RETURNING *
             `,[movie.title, movie.desc,movie.genre,movie.id]);
+    },
+    destroy: (id)=>{
+        return db.one(`
+        DELETE FROM movies
+        WHERE id = $1
+        RETURNING *
+        `,[id]);
     }
 }
 
