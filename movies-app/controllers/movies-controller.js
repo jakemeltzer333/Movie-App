@@ -16,7 +16,7 @@ const movieController = {
             title:req.body.title,
             desc: req.body.desc,
             genre: req.body.genre
-        }).then(data=>{
+        }, req.user.id).then(data=>{
             res.json(data);
         }).catch(err=>{
             res.status(500).json(err);
