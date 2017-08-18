@@ -10,7 +10,6 @@ import MoviesList from './components/MoviesList';
 
 import Login from './components/Login';
 import Register from './components/Register';
-<<<<<<< HEAD
 
 import Login from './components/Login';
 import Register from './components/Register';
