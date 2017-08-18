@@ -49,8 +49,6 @@ componentDidMount() {
 
  decideWhichPage() {
   switch(this.state.currentPage) {
-<<<<<<< HEAD
-<<<<<<< HEAD
     case 'home':
       return <Home />;
       break;
@@ -117,7 +115,6 @@ componentDidMount() {
       }).catch(err=>console.log(err))
  }
 
->>>>>>> c1c3e24d06bfb70712fdb6101525466c8d5012f3
  handleMovieSubmit(e, title, description, genre) {
   e.preventDefault();
    axios.post('/movies', {
