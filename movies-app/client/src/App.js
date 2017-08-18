@@ -34,7 +34,7 @@ componentDidMount() {
    .then(res => {
      console.log(res)
     this.setState({
-     movieData: res.data,
+     movieData: res.data.data,
     });
    }).catch(err => console.log(err));
 }
