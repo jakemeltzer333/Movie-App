@@ -112,7 +112,7 @@ componentDidMount() {
 
  handleMovieSubmit(e, title, description, genre) {
   e.preventDefault();
-   axios.post('/movies', {
+   axios.post('/movies/', {
     title,
     description,
     genre,

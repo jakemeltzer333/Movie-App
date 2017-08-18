@@ -8,15 +8,15 @@ const Movie = {
         return db.oneOrNone(`SELECT * FROM movies
     WHERE id = $1 `,[id]);
     },
-    create: (movie,id)=>{
+    create: (movie)=>{
         return db.one(
             `
             INSERT INTO movies
-            (title,description, genre, user_id)
+            (title,description, genre)
             VALUES
             ($1,$2,$3)
             RETURNING *
-            `,[movie.title, movie.desc,movie.genre,id]);
+            `,[movie.title, movie.desc,movie.genre]);
     },
     update: (movie)=>{
         return db.one(

@@ -11,12 +11,12 @@ const movieController = {
             res.json({data});
         });
     },
-    addMovie: (req,res, )=>{
+    addMovie: (req,res )=>{
         Movie.create({
             title:req.body.title,
-            desc: req.body.desc,
+            desc: req.body.description,
             genre: req.body.genre
-        }, req.user.id).then(data=>{
+        }).then(data=>{
             res.json({data});
         }).catch(err=>{
             res.status(500).json(err);
