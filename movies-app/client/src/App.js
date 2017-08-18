@@ -38,6 +38,11 @@ class App extends Component {
     case 'home':
      return <Home />;
      break;
+    case 'login':
+      return <Login handleLoginSubmit={this.handleLoginSubmit} />
+      break;
+    case 'register':
+      return <Register handleRegisterSubmit={this.handleRegisterSubmit} />
      default:
      break;
    }
@@ -51,11 +56,26 @@ class App extends Component {
    }).then(res=>{
      this.setState({
        auth: res.data.auth,
-       user: res.data.user
+       user: res.data.user,
+       currentPage: 'home'
      })
    }).catch(err=>console.log(err))
  }
 
+ handleRegisterSubmit(e, username, password, email){
+   e.preventDefault();
+   axios.post('/auth/register', {
+     username,
+     password,
+     email
+   }).then(res=>{
+     this.setState({
+       auth: res.data.auth,
+       user: res.data.user,
+       currentPage: 'home'
+     })
+   }).catch(err=>console.log(err))
+ }
 
   render() {
     return (
