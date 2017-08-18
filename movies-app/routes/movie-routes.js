@@ -3,6 +3,7 @@ const movies = express.Router();
 const movieController = require('../controllers/movies-controller');
 
 movies.get('/',movieController.getAll);
-movies.get('/:id',movieController.getById)
+movies.get('/:id',movieController.getById);
+movies.post('/', movieController.addMovie);
 
 module.exports= movies;
