@@ -5,7 +5,8 @@ class Register extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            email: ''
         }
     }
 
@@ -20,9 +21,10 @@ class Register extends Component {
     render(){
         return(
             <div className="registerForm">
-                <form onSubmit={(e)=>this.props.handleSubmit(e, this.state.username, this.state.password)}>
-                    <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleInputChange}/>
-                    <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
+                <form onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state.username, this.state.password, this.state.email)}>
+                    <input type="text" required="true" name="username" placeholder="username" value={this.state.username} onChange={this.handleInputChange}/>
+                    <input type="password" required="true" name="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
+                    <input type="email" required="true" name="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange}/>
                     <input type="submit" value="LogIn" onClick={this.handleSubmit} />
                 </form>
             </div>
