@@ -37,13 +37,17 @@ class App extends Component {
  decideWhichPage() {
   switch(this.state.currentPage) {
     case 'home':
-     return <Home />;
-     break;
+      return <Home />;
+      break;
     case 'login':
-      return <Login handleLoginSubmit={this.handleLoginSubmit} />
+      if (!this.state.auth) {
+        return <Login handleLoginSubmit={this.handleLoginSubmit} />;
+      } else return <Home />;
       break;
     case 'register':
-      return <Register handleRegisterSubmit={this.handleRegisterSubmit} />
+      if (!this.state.auth) {
+        return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
+      } else return <Home />;
      default:
      break;
    }
