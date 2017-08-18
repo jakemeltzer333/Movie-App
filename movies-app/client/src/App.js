@@ -49,17 +49,14 @@ componentDidMount() {
   switch(this.state.currentPage) {
     case 'home':
       return <Home />;
-      break;
-    case 'movies':
+    case 'login':
       if (!this.state.auth) {
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
       } else return <Home />;
-      break;
     case 'register':
       if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
       } else return <Home />;
-      break;
     case 'movies':
         return (<MoviesList
           movieData={this.state.movieData}
@@ -67,7 +64,6 @@ componentDidMount() {
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
           currentMovieId={this.state.currentMovieId}  />)
-        break;
      default:
      break;
    }
