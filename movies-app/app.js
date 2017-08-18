@@ -12,7 +12,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(cookieParser());
 app.use(
   session({
@@ -37,6 +37,13 @@ app.get('/',(req,res)=>{
     res.send('index');
 });
 
+// const authRoutes = require('./routes/auth-routes');
+// app.use('/auth', authRoutes);
+// const movieRoutes = require('./routes/movie-routes');
+// app.use('/movies', movieRoutes);
+
 app.get('*',(req,res)=>{
-    res.status(404).send('404 Not Found');
+    res.status(400).json({
+        message: 'Not found!',
+      });
 });
