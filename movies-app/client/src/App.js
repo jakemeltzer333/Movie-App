@@ -29,7 +29,7 @@ class App extends Component {
 
  decideWhichPage() {
   switch(this.state.currentPage) {
-    case 'home';
+    case 'home':
      return <Home />;
      break;
      default:
