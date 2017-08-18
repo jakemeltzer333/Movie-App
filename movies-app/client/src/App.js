@@ -23,7 +23,7 @@ class App extends Component {
 
       this.setPage = this.setPage.bind(this);
       this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-      this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+      this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
    }
 
  setPage(page) {
@@ -45,7 +45,15 @@ class App extends Component {
 
  handleLoginSubmit(e, username, password){
    e.preventDefault();
-   axios.
+   axios.post('/auth/login', {
+     username,
+     password
+   }).then(res=>{
+     this.setState({
+       auth: res.data.auth,
+       user: res.data.user
+     })
+   }).catch(err=>console.log(err))
  }
 
 
