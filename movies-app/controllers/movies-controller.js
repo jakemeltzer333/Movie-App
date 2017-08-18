@@ -5,6 +5,11 @@ const movieController = {
         Movie.findAll().then(data=>{
             res.json(data);
         });
+    },
+    getById: (req,res)=>{
+        Movie.findById(req.params.id).then(data=>{
+            res.json(data);
+        })
     }
 
 }
