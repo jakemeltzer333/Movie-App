@@ -11,8 +11,6 @@ import MoviesList from './components/MoviesList';
 import Login from './components/Login';
 import Register from './components/Register';
 
-import Login from './components/Login';
-import Register from './components/Register';
 
 class App extends Component {
    constructor() {
