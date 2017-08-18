@@ -17,6 +17,16 @@ const Movie = {
             ($1,$2,$3)
             RETURNING *
             `,[movie.title, movie.desc,movie.genre]);
+    },
+    update: (movie)=>{
+        return db.one(
+            `
+            UPDATE movies
+            SET
+            title= $1, description=$2, genre=$3
+            WHERE id= $4
+            RETURNING *
+            `,[movie.title, movie.desc,movie.genre,movie.id]);
     }
 }
 

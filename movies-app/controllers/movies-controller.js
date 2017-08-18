@@ -12,12 +12,21 @@ const movieController = {
         });
     },
     addMovie: (req,res)=>{
-        console.log(req.body.title)
-        console.log(req.body.description)
-        console.log(req.body.genre)
         Movie.create({
             title:req.body.title,
-            desc: req.body.description,
+            desc: req.body.desc,
+            genre: req.body.genre
+        }).then(data=>{
+            res.json(data);
+        }).catch(err=>{
+            res.status(500).json(err);
+        })
+    },
+    editMovie : (req,res)=>{
+        Movie.update({
+            id: req.params.id,
+            title:req.body.title,
+            desc: req.body.desc,
             genre: req.body.genre
         }).then(data=>{
             res.json(data);
