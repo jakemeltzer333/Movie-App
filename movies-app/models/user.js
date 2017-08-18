@@ -17,3 +17,5 @@ User.create = user => {
     RETURNING *
     `, [user.username, user.email, user.password_digest]);
 };
+
+module.exports = User;
