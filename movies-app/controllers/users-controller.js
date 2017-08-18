@@ -24,3 +24,5 @@ usersController.create = (req, res) => {
     res.status(500).json({error: err});
   })
 }
+
+module.exports = usersController;

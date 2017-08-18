@@ -6,11 +6,11 @@ const usersController = require('../controllers/users-controller');
 
 authRouter.post('/register', usersController.create);
 
-authRouter.post('/login', passport.Authenticate('local', {
+authRouter.post('/login', passport.authenticate('local', {
   successRedirect: '/auth/success',
   failureRedirect: '/auth/failure',
   failureFlash: true,
-  });
+  })
 );
 
 authRouter.get('/success', (req, res) => {
