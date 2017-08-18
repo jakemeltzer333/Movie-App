@@ -10,6 +10,7 @@ import MoviesList from './components/MoviesList';
 
 import Login from './components/Login';
 import Register from './components/Register';
+<<<<<<< HEAD
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -40,7 +41,6 @@ componentDidMount() {
    }).catch(err => console.log(err));
 }
 
-
  setPage(page) {
   console.log('click');
    this.setState({
@@ -50,6 +50,7 @@ componentDidMount() {
 
  decideWhichPage() {
   switch(this.state.currentPage) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     case 'home':
       return <Home />;
@@ -63,6 +64,15 @@ componentDidMount() {
       if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
       } else return <Home />;
+      break;
+    case 'movies':
+        return (<MoviesList
+          movieData={this.state.movieData}
+          handleMovieSubmit={this.handleMovieSubmit}
+          handleMovieEditSubmit={this.handleMovieEditSubmit}
+          selectEditedMovie={this.selectEditedMovie}
+          currentMovieId={this.state.currentMovieId}  />)
+        break;
      default:
      break;
    }
@@ -106,26 +116,9 @@ componentDidMount() {
           currentPage: 'home'
         })
       }).catch(err=>console.log(err))
-=======
+ }
 
-  decideWhichPage() {
-    switch(this.state.currentPage) {
-      case 'home':
-        return <Home />;
-        break;
-      case 'movies':
-        return (<MoviesList
-          movieData={this.state.movieData}
-          handleMovieSubmit={this.handleMovieSubmit}
-          handleMovieEditSubmit={this.handleMovieEditSubmit}
-          selectEditedMovie={this.selectEditedMovie}
-          currentMovieId={this.state.currentMovieId}  />)
-        break;
-      default:
-        break;
-    }
-  }
-
+>>>>>>> c1c3e24d06bfb70712fdb6101525466c8d5012f3
  handleMovieSubmit(e, title, description, genre) {
   e.preventDefault();
    axios.post('/movies', {
@@ -162,7 +155,6 @@ componentDidMount() {
       currentMovieId: null,
     })
    }).catch(err => console.log(err));
->>>>>>> phase 2
  }
 
   render() {
@@ -177,3 +169,12 @@ componentDidMount() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
