@@ -133,6 +133,7 @@ componentDidMount() {
  }
 
  selectEditedMovie(id) {
+   console.log(id)
   this.setState({
     currentMovieId:id,
   })

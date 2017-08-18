@@ -5,6 +5,7 @@ import MovieAddForm from './MovieAddForm';
 import MovieEditForm from './MovieEditForm';
 
 const MoviesList = (props) => {
+      console.log(props)
   return (
     <div className="movies-list">
       <MovieAddForm handleMovieSubmit={props.handleMovieSubmit} />

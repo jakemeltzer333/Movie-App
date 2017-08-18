@@ -3,21 +3,21 @@ const Movie = require('../models/movie');
 const movieController = {
     getAll:(req,res)=>{
         Movie.findAll().then(data=>{
-            res.json(data);
+            res.json({data});
         });
     },
     getById: (req,res)=>{
         Movie.findById(req.params.id).then(data=>{
-            res.json(data);
+            res.json({data});
         });
     },
-    addMovie: (req,res)=>{
+    addMovie: (req,res, )=>{
         Movie.create({
             title:req.body.title,
             desc: req.body.desc,
             genre: req.body.genre
         }, req.user.id).then(data=>{
-            res.json(data);
+            res.json({data});
         }).catch(err=>{
             res.status(500).json(err);
         })
@@ -29,14 +29,14 @@ const movieController = {
             desc: req.body.desc,
             genre: req.body.genre
         }).then(data=>{
-            res.json(data);
+            res.json({data});
         }).catch(err=>{
             res.status(500).json(err);
         })
     },
     deleteMovie: (req,res)=>{
         Movie.destroy(req.params.id).then(data=>{
-            res.json(data);
+            res.json({data});
         }).catch(err=>{
             res.status(500).json(err);
         });
