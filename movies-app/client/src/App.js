@@ -6,6 +6,11 @@ import axios from 'axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import MoviesList from './components/MoviesList';
+
+import Login from './components/Login';
+import Register from './components/Register';
+<<<<<<< HEAD
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -21,11 +26,20 @@ class App extends Component {
           movieData: null,
       }
 
-      this.setPage = this.setPage.bind(this);
-      this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-      this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-      this.logOut = this.logOut.bind(this);
-   }
+   this.setPage = this.setPage.bind(this);
+   this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
+   this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
+   this.selectEditedMovie = this.selectEditedMovie.bind(this);
+}
+
+componentDidMount() {
+  axios.get('/movies')
+   .then(res => {
+    this.setState({
+     movieData: res.data.data,
+    });
+   }).catch(err => console.log(err));
+}
 
  setPage(page) {
   console.log('click');
@@ -36,10 +50,12 @@ class App extends Component {
 
  decideWhichPage() {
   switch(this.state.currentPage) {
+<<<<<<< HEAD
+<<<<<<< HEAD
     case 'home':
       return <Home />;
       break;
-    case 'login':
+    case 'movies':
       if (!this.state.auth) {
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
       } else return <Home />;
@@ -48,6 +64,15 @@ class App extends Component {
       if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
       } else return <Home />;
+      break;
+    case 'movies':
+        return (<MoviesList
+          movieData={this.state.movieData}
+          handleMovieSubmit={this.handleMovieSubmit}
+          handleMovieEditSubmit={this.handleMovieEditSubmit}
+          selectEditedMovie={this.selectEditedMovie}
+          currentMovieId={this.state.currentMovieId}  />)
+        break;
      default:
      break;
    }
@@ -93,6 +118,45 @@ class App extends Component {
       }).catch(err=>console.log(err))
  }
 
+>>>>>>> c1c3e24d06bfb70712fdb6101525466c8d5012f3
+ handleMovieSubmit(e, title, description, genre) {
+  e.preventDefault();
+   axios.post('/movies', {
+    title,
+    description,
+    genre,
+   }).then(res => {
+    this.resetMovies();
+   }).catch(err => console.log(err));
+ }
+
+ handleMovieEditSubmit(e, title, description, genre) {
+  e.preventDefault();
+  axios.put(`/movies/${this.state.currentMovieId}`, {
+    title,
+    description,
+    genre,
+  }).then(res => {
+    this.resetMovies();
+  }).catch(err => console.log(err));
+ }
+
+ selectEditedMovie(id) {
+  this.setState({
+    currentMovieId:id,
+  })
+ }
+
+ resetMovies() {
+  axios.get('/movies')
+   .then(res => {
+    this.setState({
+      movieData: res.data.data,
+      currentMovieId: null,
+    })
+   }).catch(err => console.log(err));
+ }
+
   render() {
     return (
       <div className="App">
@@ -105,3 +169,12 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
