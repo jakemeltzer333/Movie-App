@@ -118,7 +118,7 @@ componentDidMount() {
    axios.post('/movies/', {
     title,
     description,
-    genre,
+    genre
    }).then(res => {
     this.resetMovies();
    }).catch(err => console.log(err));
