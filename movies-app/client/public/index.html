@@ -46,6 +46,7 @@
     if (response.status === 'connected') {
      var userID = FB.getUserID()
      console.log('Logged in as ' + userID)
+     localStorage.setItem('user_key', userID)
     }
     else {
       FB.login();
