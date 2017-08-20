@@ -18,7 +18,7 @@ class MoviesList extends Component{
         {this.MovieAddForm()}
         {this.props.movieData.map(movie => {
           if (this.props.currentMovieId === movie.id) {
-            return <MovieEditForm key={movie.id} movie={movie} handleMovieEditSubmit={this.props.handleMovieEditSubmit} />
+            return <MovieEditForm key={movie.id} movie={movie} handleMovieEditSubmit={this.props.handleMovieEditSubmit} auth={this.props.auth} />
           } else return <Movie movie={movie} selectEditedMovie={this.props.selectEditedMovie} key={movie.id} />
         })}
       </div>

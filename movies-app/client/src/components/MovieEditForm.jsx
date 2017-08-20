@@ -18,24 +18,33 @@ class MovieEditForm extends Component {
     [name]: value,
    });
  }
+ editForm = ()=>{
+   if(this.props.auth){
+     return(
+          <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre)}>
+          <label> Title
+            <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
+          </label>
+          <label> Description
+            <input type="text" name="desc" placeholder="Description" value={this.state.desc} onChange={this.handleInputChange} />
+          </label>
+          <label> Genre
+            <input type="text" name="genre" placeholder="Genre" value={this.state.genre} onChange={this.handleInputChange} />
+          </label>
+          <input type="submit" value="Edit Movie" />
+          </form>
+     )
+   } else {
+     return <h2>Log In to edit a movie!</h2>
+   }
+ }
 
  render() {
    return (
-    <div className="add">
-    <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre)}>
-     <label> Title
-      <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
-     </label>
-     <label> Description
-      <input type="text" name="desc" placeholder="Description" value={this.state.desc} onChange={this.handleInputChange} />
-     </label>
-    <label> Genre
-      <input type="text" name="genre" placeholder="Genre" value={this.state.genre} onChange={this.handleInputChange} />
-    </label>
-    <input type="submit" value="Add Movie" />
-    </form>
-    </div>
-    )
+     <div className="add">
+        {this.editForm()} 
+     </div>
+   )
   }
 }
 
