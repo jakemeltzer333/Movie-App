@@ -7,7 +7,7 @@ const Movie = (props) => {
       <p>{props.movie.description}</p>
       <p>Genre: {props.movie.genre}</p>
       {(props.auth) ? <p onClick={()=>props.fav(props.movie)}>Fav</p>:''}
-      <span className="edit" onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span>
+      {(props.auth) ? <span className="edit" onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span>: ''}
      </div>
     )
 }
