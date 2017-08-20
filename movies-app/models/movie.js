@@ -8,6 +8,14 @@ const Movie = {
         return db.oneOrNone(`SELECT * FROM movies
     WHERE id = $1 `,[id]);
     },
+    findAllFavs: (id)=>{
+        return db.query(`
+        SELECT movies.title, movies.genre, movies.description, movies.id 
+        from favorites 
+        JOIN movies ON favorites.movie_id = movies.id 
+        WHERE favorites.user_id=$1;
+        `,[id]);
+    },
     create: (movie,id)=>{
         return db.one(
             `
