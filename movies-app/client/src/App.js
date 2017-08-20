@@ -54,6 +54,7 @@ componentDidMount() {
       } else return <Home />;
     case 'movies':
         return (<MoviesList
+          auth={this.state.auth}
           movieData={this.state.movieData}
           handleMovieSubmit={this.handleMovieSubmit}
           handleMovieEditSubmit={this.handleMovieEditSubmit}
