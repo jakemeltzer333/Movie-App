@@ -52,6 +52,7 @@ componentDidMount() {
       return <Home />;
     case 'login':
       if (!this.state.auth) {
+        console.log('this is the login');
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
       } else return <Home />;
     case 'register':
@@ -70,12 +71,14 @@ componentDidMount() {
    }
  }
 
- handleLoginSubmit(e, username, password){
+ handleLoginSubmit=(e, username, password)=>{
+   console.log('this is the login request');
    e.preventDefault();
    axios.post('/auth/login', {
      username,
      password
    }).then(res=>{
+     console.log(res.data);
      this.setState({
        auth: res.data.auth,
        user: res.data.user,
