@@ -22,11 +22,6 @@ class App extends Component {
           currentMovieId: null,
           movieData: null,
       }
-
-   this.setPage = this.setPage.bind(this);
-   this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
-   this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
-   this.selectEditedMovie = this.selectEditedMovie.bind(this);
 }
 
 componentDidMount() {
@@ -39,20 +34,18 @@ componentDidMount() {
    }).catch(err => console.log(err));
 }
 
- setPage(page) {
-  console.log('click');
+ setPage = (page) => {
    this.setState({
     currentPage: page,
    })
  }
 
- decideWhichPage() {
+ decideWhichPage = () => {
   switch(this.state.currentPage) {
     case 'home':
       return <Home />;
     case 'login':
       if (!this.state.auth) {
-        console.log('this is the login');
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
       } else return <Home />;
     case 'register':
@@ -71,14 +64,12 @@ componentDidMount() {
    }
  }
 
- handleLoginSubmit=(e, username, password)=>{
-   console.log('this is the login request');
+ handleLoginSubmit = (e, username, password) => {
    e.preventDefault();
    axios.post('/auth/login', {
      username,
      password
    }).then(res=>{
-     console.log(res.data);
      this.setState({
        auth: res.data.auth,
        user: res.data.user,
@@ -87,7 +78,7 @@ componentDidMount() {
    }).catch(err=>console.log(err))
  }
 
- handleRegisterSubmit(e, username, password, email){
+ handleRegisterSubmit = (e, username, password, email) => {
    e.preventDefault();
    axios.post('/auth/register', {
      username,
@@ -102,7 +93,7 @@ componentDidMount() {
    }).catch(err=>console.log(err))
  }
 
- logOut = ()=> {
+ logOut = () => {
     axios.get('/auth/logout')
       .then(res=>{
         console.log(res)
@@ -113,7 +104,7 @@ componentDidMount() {
       }).catch(err=>console.log(err))
  }
 
- handleMovieSubmit(e, title, description, genre) {
+ handleMovieSubmit = (e, title, description, genre) => {
   e.preventDefault();
    axios.post('/movies/', {
     title,
@@ -124,7 +115,7 @@ componentDidMount() {
    }).catch(err => console.log(err));
  }
 
- handleMovieEditSubmit(e, title, description, genre) {
+ handleMovieEditSubmit = (e, title, description, genre) => {
   e.preventDefault();
   axios.put(`/movies/${this.state.currentMovieId}`, {
     title,
@@ -135,14 +126,13 @@ componentDidMount() {
   }).catch(err => console.log(err));
  }
 
- selectEditedMovie(id) {
-   console.log(id)
+ selectEditedMovie = (id) => {
   this.setState({
     currentMovieId:id,
   })
  }
 
- resetMovies() {
+ resetMovies = () => {
   axios.get('/movies')
    .then(res => {
     this.setState({
