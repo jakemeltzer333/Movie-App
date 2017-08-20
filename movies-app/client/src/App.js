@@ -102,7 +102,7 @@ componentDidMount() {
    }).catch(err=>console.log(err))
  }
 
- logOut(){
+ logOut = ()=> {
     axios.get('/auth/logout')
       .then(res=>{
         console.log(res)
