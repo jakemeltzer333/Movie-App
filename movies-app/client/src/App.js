@@ -22,11 +22,6 @@ class App extends Component {
           currentMovieId: null,
           movieData: null,
       }
-
-   this.setPage = this.setPage.bind(this);
-   this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
-   this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
-   this.selectEditedMovie = this.selectEditedMovie.bind(this);
 }
 
 componentDidMount() {
@@ -39,14 +34,13 @@ componentDidMount() {
    }).catch(err => console.log(err));
 }
 
- setPage(page) {
-  console.log('click');
+ setPage = (page) => {
    this.setState({
     currentPage: page,
    })
  }
 
- decideWhichPage() {
+ decideWhichPage = () => {
   switch(this.state.currentPage) {
     case 'home':
       return <Home />;
@@ -70,7 +64,7 @@ componentDidMount() {
    }
  }
 
- handleLoginSubmit(e, username, password){
+ handleLoginSubmit = (e, username, password) => {
    e.preventDefault();
    axios.post('/auth/login', {
      username,
@@ -84,7 +78,7 @@ componentDidMount() {
    }).catch(err=>console.log(err))
  }
 
- handleRegisterSubmit(e, username, password, email){
+ handleRegisterSubmit = (e, username, password, email) => {
    e.preventDefault();
    axios.post('/auth/register', {
      username,
@@ -99,7 +93,7 @@ componentDidMount() {
    }).catch(err=>console.log(err))
  }
 
- logOut(){
+ logOut = () => {
     axios.get('/auth/logout')
       .then(res=>{
         console.log(res)
@@ -110,18 +104,18 @@ componentDidMount() {
       }).catch(err=>console.log(err))
  }
 
- handleMovieSubmit(e, title, description, genre) {
+ handleMovieSubmit = (e, title, description, genre) => {
   e.preventDefault();
    axios.post('/movies/', {
     title,
     description,
-    genre,
+    genre
    }).then(res => {
     this.resetMovies();
    }).catch(err => console.log(err));
  }
 
- handleMovieEditSubmit(e, title, description, genre) {
+ handleMovieEditSubmit = (e, title, description, genre) => {
   e.preventDefault();
   axios.put(`/movies/${this.state.currentMovieId}`, {
     title,
@@ -132,14 +126,13 @@ componentDidMount() {
   }).catch(err => console.log(err));
  }
 
- selectEditedMovie(id) {
-   console.log(id)
+ selectEditedMovie = (id) => {
   this.setState({
     currentMovieId:id,
   })
  }
 
- resetMovies() {
+ resetMovies = () => {
   axios.get('/movies')
    .then(res => {
     this.setState({
