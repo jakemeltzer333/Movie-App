@@ -22,6 +22,10 @@ const movieController = {
             res.status(500).json(err);
         })
     },
+    favMovie:(req,res)=>{
+        console.log(req.params.id);
+        console.log(req.user);
+    },
     editMovie : (req,res)=>{
         Movie.update({
             id: req.params.id,
