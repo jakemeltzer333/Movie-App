@@ -14,3 +14,8 @@ CREATE TABLE IF NOT EXISTS movies (
   genre VARCHAR(255),
   user_id INT REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS favorites(
+  user_id INT REFERENCES users(id),
+  movie_id INT REFERENCES movies(id)
+);
