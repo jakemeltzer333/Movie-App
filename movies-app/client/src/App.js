@@ -137,6 +137,7 @@ componentDidMount() {
  favoriteMovie = (movie)=>{
    console.log('I like this movie');
    console.log(movie);
+   axios.post(`/movies/fav/${movie.id}`)
  }
 
  resetMovies = () => {
