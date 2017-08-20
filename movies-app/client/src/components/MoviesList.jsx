@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Movie from './Movie';
 import MovieAddForm from './MovieAddForm';
 import MovieEditForm from './MovieEditForm';
 
-const MoviesList = (props) => {
-      console.log(props)
-  return (
-    <div className="movies-list">
-      <MovieAddForm handleMovieSubmit={props.handleMovieSubmit} />
-      {props.movieData.map(movie => {
-        if (props.currentMovieId === movie.id) {
-          return <MovieEditForm key={movie.id} movie={movie} handleMovieEditSubmit={props.handleMovieEditSubmit} />
-        } else return <Movie movie={movie} selectEditedMovie={props.selectEditedMovie} key={movie.id} />
-      })}
-    </div>
-  )
+class MoviesList extends Component{
+  MovieAddForm=()=>{
+    if(this.props.auth){
+      return(<MovieAddForm handleMovieSubmit={this.props.handleMovieSubmit} />)
+    } else {
+      return <h1>Log In to Add a Movie </h1>
+    }
+  }
+  render(){
+    return (
+      <div className="movies-list">
+        {this.MovieAddForm()}
+        {this.props.movieData.map(movie => {
+          if (this.props.currentMovieId === movie.id) {
+            return <MovieEditForm key={movie.id} movie={movie} handleMovieEditSubmit={this.props.handleMovieEditSubmit} auth={this.props.auth} />
+          } else return <Movie movie={movie} selectEditedMovie={this.props.selectEditedMovie} key={movie.id} />
+        })}
+      </div>
+    )
+  }
 }
 
 export default MoviesList;
