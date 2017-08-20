@@ -11,6 +11,14 @@ const movieController = {
             res.json({data});
         });
     },
+    getAllFavs: (req,res)=>{
+        console.log(req.user);
+        Movie.findAllFavs(req.user.id).then(data=>{
+            res.json({data})
+        }).catch(err=>{
+            console.log(err);
+        })
+    },
     addMovie: (req,res )=>{
         Movie.create({
             title:req.body.title,
@@ -20,6 +28,17 @@ const movieController = {
             res.json({data});
         }).catch(err=>{
             res.status(500).json(err);
+        })
+    },
+    favMovie:(req,res)=>{
+        console.log(req.params.id);
+        console.log(req.user);
+        Movie.addFav(req.params.id,req.user.id)
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(err=>{
+            console.log(err);
         })
     },
     editMovie : (req,res)=>{

@@ -10,6 +10,7 @@ import MoviesList from './components/MoviesList';
 
 import Login from './components/Login';
 import Register from './components/Register';
+import Profile from './components/Profile';
 
 
 class App extends Component {
@@ -55,11 +56,14 @@ componentDidMount() {
     case 'movies':
         return (<MoviesList
           auth={this.state.auth}
+          fav= {this.favoriteMovie}
           movieData={this.state.movieData}
           handleMovieSubmit={this.handleMovieSubmit}
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
           currentMovieId={this.state.currentMovieId}  />)
+    case 'user':
+        return(<Profile />)
      default:
      break;
    }
@@ -131,6 +135,12 @@ componentDidMount() {
   this.setState({
     currentMovieId:id,
   })
+ }
+
+ favoriteMovie = (movie)=>{
+   console.log('I like this movie');
+   console.log(movie);
+   axios.post(`/movies/fav/${movie.id}`)
  }
 
  resetMovies = () => {

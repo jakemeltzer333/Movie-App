@@ -8,6 +8,14 @@ const Movie = {
         return db.oneOrNone(`SELECT * FROM movies
     WHERE id = $1 `,[id]);
     },
+    findAllFavs: (id)=>{
+        return db.query(`
+        SELECT movies.title, movies.genre, movies.description, movies.id 
+        from favorites 
+        JOIN movies ON favorites.movie_id = movies.id 
+        WHERE favorites.user_id=$1;
+        `,[id]);
+    },
     create: (movie,id)=>{
         return db.one(
             `
@@ -17,6 +25,15 @@ const Movie = {
             ($1,$2,$3,$4)
             RETURNING *
             `,[movie.title, movie.desc,movie.genre, id]);
+    },
+    addFav:(movie_id, user_id)=>{
+        return db.one(`
+            INSERT INTO favorites
+            (user_id, movie_id)
+            VALUES
+            ($1, $2)
+            RETURNING *
+        `,[user_id, movie_id]);
     },
     update: (movie)=>{
         return db.one(
