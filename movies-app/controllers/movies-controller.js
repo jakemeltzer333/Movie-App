@@ -25,6 +25,13 @@ const movieController = {
     favMovie:(req,res)=>{
         console.log(req.params.id);
         console.log(req.user);
+        Movie.addFav(req.params.id,req.user.id)
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     },
     editMovie : (req,res)=>{
         Movie.update({

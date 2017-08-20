@@ -18,6 +18,15 @@ const Movie = {
             RETURNING *
             `,[movie.title, movie.desc,movie.genre, id]);
     },
+    addFav:(movie_id, user_id)=>{
+        return db.one(`
+            INSERT INTO favorites
+            (user_id, movie_id)
+            VALUES
+            ($1, $2)
+            RETURNING *
+        `,[user_id, movie_id]);
+    },
     update: (movie)=>{
         return db.one(
             `
