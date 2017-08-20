@@ -29,6 +29,7 @@ nav {
   justify-content: center;
   list-style: none;
   border: 2px solid #54DAF0;
+  background-color: black;
 }
 
 li {
@@ -38,6 +39,10 @@ li {
   cursor: pointer;
   font-family: 'Audiowide', cursive;
   color: #54DAF0;
+}
+
+li:hover {
+  background-color: #E81CB3;
 }
 
 .movies-list {
@@ -63,7 +68,7 @@ li {
   padding: 10px;
   margin-top: 10px;
   background-color: black;
-  color: #195bbc;
+  color: #54DAF0;
   font-family: "Audiowide", cursive;
 }
 
@@ -75,14 +80,16 @@ li {
 }
 
 .movie-title {
+  font-size: 35px;
   font-family: 'Audiowide', cursive;
   text-decoration: underline;
   color: #54DAF0;
+  cursor: default;
 }
 
 .movie-info {
   font-family: "Allan", cursive;
-  font-size: 20px; 
+  font-size: 25px; 
 }
 
 .favs {
