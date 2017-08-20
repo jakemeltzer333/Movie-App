@@ -1,24 +1,99 @@
-.App {
+body {
+background-color: #E81CB3;
+}
+
+.logo {
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  color: #54DAF0;
+  background-color: black;
+}
+
+.home {
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  font-size: 30px;
+  color: #54DAF0;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  border: 2px solid #54DAF0;
+}
+
+li {
+  text-decoration: underline;
+  font-size: 20px;
+  padding: 15px;
+  cursor: pointer;
+  font-family: 'Audiowide', cursive;
+  color: #54DAF0;
+}
+
+.movies-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register, .register-submit, .login, .login-submit, .add {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: black;
+  color: #195bbc;
+  font-family: "Audiowide", cursive;
+}
+
+.list-header {
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  color: #54DAF0;
+  background-color: black;
+}
+
+.movie-title {
+  font-family: 'Audiowide', cursive;
+  text-decoration: underline;
+  color: #54DAF0;
+}
+
+.movie-info {
+  font-family: "Allan", cursive;
+  font-size: 20px; 
+}
+
+.favs {
+  color: #54DAF0;
+  font-family: 'Monoton', cursive;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+footer {
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  color: #54DAF0;
+  background-color: black;
 }
