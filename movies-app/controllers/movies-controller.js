@@ -11,6 +11,14 @@ const movieController = {
             res.json({data});
         });
     },
+    getAllFavs: (req,res)=>{
+        console.log(req.user);
+        Movie.findAllFavs(req.user.id).then(data=>{
+            res.json({data})
+        }).catch(err=>{
+            console.log(err);
+        })
+    },
     addMovie: (req,res )=>{
         Movie.create({
             title:req.body.title,
