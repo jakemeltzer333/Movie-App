@@ -23,6 +23,7 @@ class App extends Component {
           currentMovieId: null,
           movieData: null,
       }
+        
 }
 
 componentDidMount() {
