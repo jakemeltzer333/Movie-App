@@ -10,6 +10,7 @@ import MoviesList from './components/MoviesList';
 
 import Login from './components/Login';
 import Register from './components/Register';
+import Profile from './components/Profile';
 
 
 class App extends Component {
@@ -61,6 +62,8 @@ componentDidMount() {
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
           currentMovieId={this.state.currentMovieId}  />)
+    case 'user':
+        return(<Profile />)
      default:
      break;
    }
