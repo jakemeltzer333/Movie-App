@@ -55,6 +55,7 @@ componentDidMount() {
     case 'movies':
         return (<MoviesList
           auth={this.state.auth}
+          fav= {this.favoriteMovie}
           movieData={this.state.movieData}
           handleMovieSubmit={this.handleMovieSubmit}
           handleMovieEditSubmit={this.handleMovieEditSubmit}
@@ -131,6 +132,11 @@ componentDidMount() {
   this.setState({
     currentMovieId:id,
   })
+ }
+
+ favoriteMovie = (movie)=>{
+   console.log('I like this movie');
+   console.log(movie);
  }
 
  resetMovies = () => {
