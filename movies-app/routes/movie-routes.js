@@ -5,6 +5,7 @@ const authHelpers = require('../services/auth/auth-helpers');
 
 movies.get('/',movieController.getAll);
 movies.get('/:id',movieController.getById);
+movies.get('/fav/all',movieController.getAllFavs);
 movies.post('/',movieController.addMovie);
 movies.post('/fav/:id',movieController.favMovie);
 movies.put('/:id',movieController.editMovie);
