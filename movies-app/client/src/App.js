@@ -22,10 +22,16 @@ class App extends Component {
           currentPage: 'home',
           currentMovieId: null,
           movieData: null,
+          fbUserId: null
       }
+        
 }
 
 componentDidMount() {
+  console.log(localStorage.user_key)
+  this.setState({
+    fbUserId: localStorage.user_key
+  })
   axios.get('/movies')
    .then(res => {
      console.log(res)
