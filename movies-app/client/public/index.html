@@ -33,7 +33,7 @@
     });
 
     FB.AppEvents.logPageView();
-    
+
     FB.getLoginStatus(function(resposne) {
         checkStatus(resposne);
       })
@@ -53,48 +53,39 @@
       console.log(response)
       if(response.status === 'connected'){
         authStatus()
+        localStorage.setItem('user_key', FB.getUserID())
       }else{
         document.querySelector('.loginName').innerHTML = ('Login into the App with FaceBook')
       }
     }
 
-  // function handleAuth(){
-  //   FB.getLoginStatus(function(response) {
-  //     if (response.status === 'connected') {
-  //     var userID = FB.getUserID()
-  //     console.log('Logged in as ' + userID)
-  //     localStorage.setItem('user_key', userID)
-  //     document.querySelector('.loginName').innerHTML = ('Welcome '+ userID)
-  //     }
-  //     else {
-  //       FB.login(function(response) {
-  //         console.log(response)
-  //         if(response.status === 'connected'){
-  //           localStorage.setItem('user_key', FB.getUserID())
-  //         }else{
-  //           console.log('Wasnt able to log in')
-  //         }
-  //       }, {scope: 'public_profile, email'});
-  //     }
-  //   });
-  // }
+   function checkLoginState(){
+     FB.getLoginStatus(function(response) {
+       checkStatus(response)
+     })
+   }
 
-  // function handleLogout(){
-  //   confirm('Are you sure you want to logout?') ? FB.logout() : null
-  // }
-
-  
+    function authStatus(){
+      console.log('Getting Profile info')
+      FB.api('/me', function(response){
+        console.log(response)
+        console.log('welcome ' + response.name)
+        document.querySelector('.loginName').innerHTML = ('Welcome ' +response.name+ '!')
+        //This would be sent to PSQL as the useriD
+        localStorage.setItem('user_key', FB.getUserID())
+      })
+    }  
 
 </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
 
-      <button onclick="handleAuth()">FB Login</button>
-      <button onclick="handleLogout()">FB Logout</button>
-
       <div class="loginResponse">
-        <h1 class="loginName"></h1>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+        <div id="status">
+          <h1 class="loginName"></h1>
+        </div>
       </div>
 
     <div id="root">
